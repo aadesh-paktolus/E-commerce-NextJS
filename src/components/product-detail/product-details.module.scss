@@ -35,14 +35,23 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 48px 0px;
+  padding: 26px 0px;
+  border-bottom: 1px solid grey;
+
+  @media (min-width: 640px) and (max-width: 768px) {
+    border-bottom: none;
+  }
 
   @media (min-width: 768px) and (max-width: 1024px) {
+    border-bottom: none;
     border-right: 2px solid grey;
-    padding: 78px 0px;
+    padding: 59px 0px;
   }
+
   @media (min-width: 1024px) {
+    border-bottom: none;
     border-right: 2px solid grey;
+    padding: 36px 0px;
     width: 40%;
   }
 }
@@ -80,7 +89,7 @@
 .description {
   font-size: 14px;
   margin: 8px 0px;
-  line-height: 16px;
+  line-height: 20px;
 }
 
 .rating {
@@ -89,6 +98,7 @@
   margin-bottom: 10px;
   h5 {
     margin: 0px 0px 5px 0px;
+    font-size: 15px;
   }
 
   h5:nth-child(even) {
@@ -99,7 +109,7 @@
 .discount_price {
   display: flex;
   align-items: center;
-  margin: 10px 0px 0px;
+  margin: 10px 0px 5px;
 
   h3:nth-child(1) {
     color: red;
@@ -112,7 +122,7 @@
 }
 
 .mrp_price {
-  font-size: 13px;
+  font-size: 14px;
   color: grey;
 }
 
@@ -120,6 +130,7 @@
   margin-top: 10px;
   font-size: 14px;
   margin-bottom: 15px;
+  line-height: 20px;
 }
 
 .add_cart {

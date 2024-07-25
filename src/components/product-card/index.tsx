@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { Separator } from "../ui/separator";
 import Styles from "./card.module.scss";
 import SeeMoreLess from "./see-more-less";
 
@@ -37,6 +38,7 @@ const ProductCard: FC<IProductData> = ({ product }) => {
                   />
                 </div>
               </Link>
+              <Separator />
               <div className={Styles.title_heart}>
                 <CardTitle>{item.title}</CardTitle>
                 <OutlineHeart />

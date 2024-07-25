@@ -1,0 +1,39 @@
+.main_div {
+  padding: 30px 20px;
+}
+
+.container {
+  margin: auto;
+}
+
+.label {
+  color: black;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.input {
+  margin-top: 0.5rem;
+  color: #ffffff;
+  border: none;
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+}
+
+.button {
+  width: 50%;
+  font-size: 1.125rem;
+  background: linear-gradient(90deg, #f9572a, #ff9b05);
+}

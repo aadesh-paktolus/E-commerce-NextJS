@@ -16,7 +16,6 @@
 .card_container {
   margin: 20px 0px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(90deg, #f9572a, #ff9b05);
   border-radius: 20px;
 }
 
@@ -49,7 +48,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
+}
+
+.description {
+  color: black;
 }
 
 .see_more {
@@ -65,19 +67,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
 }
 
 .rating {
   margin: 6px 0px;
-  color: white;
 }
 
 .rating,
 .stocks {
   display: flex;
   align-items: center;
-  color: white;
 
   h5:nth-child(2) {
     margin-left: 5px;
@@ -85,7 +84,7 @@
 }
 
 .add_to_cart {
-  background: white;
-  color: #f9572a;
+  background: linear-gradient(90deg, #f9572a, #ff9b05);
+  color: white;
   border-radius: 10px 0px 10px 0px;
 }

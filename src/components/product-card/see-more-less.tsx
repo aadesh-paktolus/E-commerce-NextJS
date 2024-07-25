@@ -21,7 +21,7 @@ const SeeMoreLess: FC<ISeemoreLess> = ({ description }) => {
   };
 
   return (
-    <CardDescription>
+    <CardDescription className={Styles.description}>
       {description.slice(0, count)}{" "}
       <CardSpan onClick={handleSeeMoreLess} className={Styles.see_more}>
         {flag ? "See Less" : "See More"}

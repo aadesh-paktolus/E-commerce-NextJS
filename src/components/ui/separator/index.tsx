@@ -3,7 +3,7 @@
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import clsx from "clsx";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import styles from "./separator.module.scss";
+import Styles from "./separator.module.scss";
 
 const Separator = forwardRef<
   ElementRef<typeof SeparatorPrimitive.Root>,
@@ -18,10 +18,10 @@ const Separator = forwardRef<
       decorative={decorative}
       orientation={orientation}
       className={clsx(
-        styles.base,
+        Styles.base,
         {
-          [styles.vertical]: orientation === "vertical",
-          [styles.horizontal]: orientation === "horizontal",
+          [Styles.vertical]: orientation === "vertical",
+          [Styles.horizontal]: orientation === "horizontal",
         },
         className
       )}

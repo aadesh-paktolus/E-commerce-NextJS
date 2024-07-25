@@ -15,15 +15,23 @@ export default function Navbar() {
         </div>
       </Link>
       <div className={Styles.navbar}>
-        {!session && !loading && <h3 className={Styles.text}>Login</h3>}
+        {!session && !loading && (
+          <Link href="/auth/login">
+            <h3 className={Styles.text}>Login</h3>
+          </Link>
+        )}
 
-        {!session && !loading && <h3 className={Styles.text}>Signup</h3>}
+        {!session && !loading && (
+          <Link href="/auth/register">
+            <h3 className={Styles.text}>Signup</h3>
+          </Link>
+        )}
 
         {session && (
           <h3
             className={Styles.text}
             onClick={() => {
-              signOut();
+              signOut({ callbackUrl: "/products" });
             }}
           >
             Logout
