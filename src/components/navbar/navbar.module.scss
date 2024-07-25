@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #f9572a, #ff9b05);
+  border-bottom: 1px solid #eaeaea;
+}
+
+.logo {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+
+  :hover {
+    color: white;
+    text-shadow: 1px 1px black;
+  }
+}
+
+.navbar {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.text {
+  cursor: pointer;
+}
+
+.text:hover {
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+.mobile_cart {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .logo {
+    margin-bottom: 0;
+  }
+}

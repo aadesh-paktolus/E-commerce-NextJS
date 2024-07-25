@@ -1,0 +1,101 @@
+.card {
+  border-radius: var(--radius);
+  border-width: 1px;
+  background-color: var(--card);
+  color: var(--card-foreground);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 100%;
+
+  @media (min-width: 640px) and (max-width: 768px) {
+    width: 45%;
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 45%;
+  }
+  @media (min-width: 1024px) {
+    width: 22%;
+  }
+}
+
+.card__header {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  > :not([hidden]) {
+    & ~ :not([hidden]) {
+      margin-top: 0.375rem;
+      margin-bottom: 0.375rem;
+    }
+  }
+}
+
+.card__title {
+  font-size: 1.2rem /* 24px */;
+  line-height: 1rem /* 32px */;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.card__description {
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+  color: var(--muted-foreground);
+}
+
+.card__content {
+  padding: 0px 1rem 1rem /* 24px */;
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  padding: 1rem /* 24px */;
+  padding-top: 0px;
+  justify-content: center;
+}
+
+// .card {
+//   border-radius: var(--radius);
+//   border-width: 1px;
+//   background-color: var(--card);
+//   color: var(--card-foreground);
+//   box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+// }
+
+// .card__header {
+//   display: flex;
+//   flex-direction: column;
+//   padding: 1.5rem /* 24px */;
+
+//   > :not([hidden]) {
+//     & ~ :not([hidden]) {
+//       margin-top: 0.375rem;
+//       margin-bottom: 0.375rem;
+//     }
+//   }
+// }
+
+// .card__title {
+//   font-size: 1.5rem /* 24px */;
+//   line-height: 1rem /* 32px */;
+//   font-weight: 600;
+//   letter-spacing: -0.025em;
+// }
+
+// .card__description {
+//   font-size: 0.875rem /* 14px */;
+//   line-height: 1.25rem /* 20px */;
+//   color: var(--muted-foreground);
+// }
+
+// .card__content {
+//   padding: 1.5rem /* 24px */;
+//   padding-top: 0px;
+// }
+
+// .card__footer {
+//   display: flex;
+//   align-items: center;
+//   padding: 1.5rem /* 24px */;
+//   padding-top: 0px;
+// }
