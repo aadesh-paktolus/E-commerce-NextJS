@@ -1,0 +1,22 @@
+.toaster {
+  .toast {
+    background: var(--background);
+    color: var(--text-foreground);
+    border-color: var(--border-border);
+    box-shadow: var(--shadow-lg);
+
+    .description {
+      color: var(--muted-foreground);
+    }
+
+    .actionButton {
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .cancelButton {
+      background: var(--muted);
+      color: var(--muted-foreground);
+    }
+  }
+}

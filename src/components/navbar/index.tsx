@@ -38,9 +38,11 @@ export default function Navbar() {
           </h3>
         )}
 
-        <div className={Styles.mobile_cart}>
-          <Cart />
-        </div>
+        <Link href="/cart">
+          <div className={Styles.mobile_cart}>
+            <Cart />
+          </div>
+        </Link>
       </div>
     </header>
   );

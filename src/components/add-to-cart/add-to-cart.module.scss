@@ -1,0 +1,46 @@
+.first {
+  display: flex;
+  display: flex;
+  align-items: center;
+  padding: 5px 0px;
+}
+
+.span_text {
+  font-weight: 900;
+}
+
+.btns_quantity {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  color: white;
+  padding: 2px 10px;
+  font-size: 25px;
+  background: linear-gradient(90deg, #f9572a, #ff9b05);
+
+  :hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+.quantity {
+  margin: 0px 5px;
+  font-size: 15px;
+}
+
+.second {
+  padding: 10px 0px 0px;
+  text-align: center;
+}
+
+.add_to_cart {
+  color: white;
+  padding: 2px 10px;
+  font-size: 17px;
+  background: linear-gradient(90deg, #f9572a, #ff9b05);
+  border-radius: 0px 10px;
+}

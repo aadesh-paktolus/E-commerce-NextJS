@@ -27,17 +27,15 @@ const ProductCard: FC<IProductData> = ({ product }) => {
         return (
           <Card className={Styles.card_container} key={item._id}>
             <CardHeader>
-              <Link href={`/products/${item._id}`}>
-                <div className={Styles.image_container}>
-                  <Image
-                    alt="error_in_list_page"
-                    src={item.thumbnail}
-                    className={Styles.image}
-                    width={200}
-                    height={200}
-                  />
-                </div>
-              </Link>
+              <div className={Styles.image_container}>
+                <Image
+                  alt="error_in_list_page"
+                  src={item.thumbnail}
+                  className={Styles.image}
+                  width={200}
+                  height={200}
+                />
+              </div>
               <Separator />
               <div className={Styles.title_heart}>
                 <CardTitle>{item.title}</CardTitle>
@@ -63,7 +61,9 @@ const ProductCard: FC<IProductData> = ({ product }) => {
               </div>
             </CardContent>
             <CardFooter>
-              <Button className={Styles.add_to_cart}>Add To Cart</Button>
+              <Link href={`/products/${item._id}`}>
+                <Button className={Styles.add_to_cart}>Details</Button>
+              </Link>
             </CardFooter>
           </Card>
         );

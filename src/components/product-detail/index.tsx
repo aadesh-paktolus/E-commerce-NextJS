@@ -3,6 +3,7 @@ import { Iproduct } from "@/interfaces/products-iterfaces";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import AddToCartButton from "../add-to-cart";
 import Location from "../icons/location";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
@@ -89,14 +90,13 @@ export default function ProductDetail({ product }: ProductDetailsProps) {
 
             <h4 className={Styles.stock}>In stock - {product.stock} Pieces</h4>
 
-            <div className={Styles.cart_buy}>
-              <Button variant="outline" className={Styles.cart_btn}>
-                Add To Cart
-              </Button>
-              <Button variant="outline" className={Styles.buy_btn}>
-                Buy Now
-              </Button>
-            </div>
+            <AddToCartButton
+              productId={product._id}
+              name={product.title}
+              price={product.price}
+              thumbnail={product.thumbnail}
+              stock={product.stock}
+            />
           </div>
         </div>
       </div>
