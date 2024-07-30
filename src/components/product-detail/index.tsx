@@ -1,11 +1,20 @@
 "use client";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Iproduct } from "@/interfaces/products-iterfaces";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef } from "react";
 import AddToCartButton from "../add-to-cart";
 import Location from "../icons/location";
 import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 import { Separator } from "../ui/separator";
 import Styles from "./product-details.module.scss";
 
@@ -14,11 +23,7 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetail({ product }: ProductDetailsProps) {
-  const [showImage, setshowImage] = useState(product.thumbnail);
-
-  const loadImage = (image: string) => {
-    setshowImage(image);
-  };
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
   return (
     <div className={Styles.main_div}>
       <Link href="/products">
@@ -27,27 +32,33 @@ export default function ProductDetail({ product }: ProductDetailsProps) {
 
       <div className={Styles.card_container}>
         <div className={Styles.img_container}>
-          <div className={Styles.image}>
-            <Image
-              src={showImage}
-              alt="error_in_detail_page"
-              width={300}
-              height={300}
-            />
-          </div>
-          <div className={Styles.all_images}>
-            {product.images.map((item, index) => (
-              <Image
-                src={item}
-                key={index}
-                alt="error_in_detail"
-                width={70}
-                height={70}
-                className={Styles.show_images}
-                onClick={() => loadImage(item)}
-              />
-            ))}
-          </div>
+          <Carousel
+            plugins={[plugin.current]}
+            className={Styles.carousel}
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+          >
+            <CarouselContent>
+              {product.images.map((image: string, index: number) => (
+                <CarouselItem key={index}>
+                  <div className={Styles.carousel_container}>
+                    <Card className={Styles.carousel_card}>
+                      <CardContent className={Styles.card_content}>
+                        <Image
+                          src={image}
+                          alt="product images"
+                          width={300}
+                          height={400}
+                        />
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
         <div className={Styles.info_container}>
           <h2>{product.title}</h2>

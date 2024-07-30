@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 26px 0px;
+  padding: 26px 55px;
   border-bottom: 1px solid grey;
 
   @media (min-width: 640px) and (max-width: 768px) {
@@ -51,9 +51,48 @@
   @media (min-width: 1024px) {
     border-bottom: none;
     border-right: 2px solid grey;
-    padding: 36px 0px;
+    padding: 36px 55px;
     width: 40%;
   }
+}
+
+.carousel_card {
+  width: 100%;
+  background-color: greenyellow;
+  @media (min-width: 640px) and (max-width: 768px) {
+    background-color: red;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    background-color: purple;
+  }
+
+  @media (min-width: 1024px) {
+    background-color: green;
+  }
+}
+
+.carousel {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 20rem;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    max-width: 16rem;
+  }
+}
+
+.carousel_container {
+  padding: 0.25rem;
+}
+
+.card_content {
+  display: flex;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
 }
 
 .image {
