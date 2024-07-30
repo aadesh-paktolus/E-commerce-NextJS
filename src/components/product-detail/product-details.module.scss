@@ -58,18 +58,6 @@
 
 .carousel_card {
   width: 100%;
-  background-color: greenyellow;
-  @media (min-width: 640px) and (max-width: 768px) {
-    background-color: red;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    background-color: purple;
-  }
-
-  @media (min-width: 1024px) {
-    background-color: green;
-  }
 }
 
 .carousel {

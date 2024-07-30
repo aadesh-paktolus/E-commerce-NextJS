@@ -1,4 +1,4 @@
-.main_div {
+.cart_main {
   padding: 50px 10px;
 
   @media (min-width: 640px) and (max-width: 768px) {
@@ -128,4 +128,12 @@
   @media (min-width: 1024px) {
     padding: 0 20px;
   }
+}
+
+.cart_totalcount {
+  border-top: 2px solid black;
+  width: 70%;
+  margin: 0px auto;
+  padding: 20px 0px 0px;
+  text-align: right;
 }

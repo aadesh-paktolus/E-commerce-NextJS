@@ -17,6 +17,7 @@ import Styles from "./cart.module.scss";
 const Cart = () => {
   const [cartData, setCartData] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [totalCartCount, setTotalCartCount] = useState<number>(0);
   const router = useRouter();
 
   const fetchCartApi = async () => {
@@ -41,9 +42,20 @@ const Cart = () => {
     }
   };
 
+  const calculateTotalCount = () => {
+    const total = cartData.reduce((prev: number, curr: CartItem) => {
+      return prev + curr.price;
+    }, 0);
+    setTotalCartCount(total);
+  };
+
   useEffect(() => {
     fetchCart();
   }, []);
+
+  useEffect(() => {
+    calculateTotalCount();
+  }, [cartData]);
 
   const removeCart = async (productId: string) => {
     const res = await fetch("/api/cart/remove", {
@@ -56,7 +68,7 @@ const Cart = () => {
 
     if (res.ok) {
       setCartData(cartData.filter((item) => item.productId !== productId));
-      toast.success("Item removed sucessfully from cart.");
+      toast.success("Item removed successfully from cart.");
     } else {
       toast.error("Can not remove item from cart.");
     }
@@ -74,7 +86,7 @@ const Cart = () => {
     if (res.ok) {
       await fetchCartApi();
     } else {
-      toast.error("Can not update quantity.");
+      toast.error("Cannot update quantity.");
     }
   };
 
@@ -83,68 +95,77 @@ const Cart = () => {
   }
 
   return (
-    <div className={Styles.main_div}>
-      <Button onClick={() => router.back()} className={Styles.back_btn}>
-        Back
-      </Button>
+    <>
+      <div className={Styles.cart_main}>
+        <Button onClick={() => router.back()} className={Styles.back_btn}>
+          Back
+        </Button>
+        {cartData.length === 0 ? (
+          <p className={Styles.empty}>Your cart is empty.</p>
+        ) : (
+          cartData.map((item) => {
+            return (
+              <Card key={item.productId} className={Styles.card_container}>
+                <CardHeader className={Styles.img_name}>
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.name}
+                    width={100}
+                    height={100}
+                  />
+                  <CardTitle className={Styles.title}>{item.name}</CardTitle>
+                </CardHeader>
+
+                <div className={Styles.price_container}>
+                  <p className={Styles.price}>
+                    <b>${Math.floor(item.price)}/-</b>
+                  </p>
+                </div>
+
+                <CardContent className={Styles.card_content}>
+                  <Button
+                    className={Styles.btn}
+                    onClick={() =>
+                      updateQuantity(
+                        item.productId,
+                        Math.max(item.quantity - 1, 1)
+                      )
+                    }
+                  >
+                    -
+                  </Button>
+                  <div className={Styles.quantity}>{item.quantity}</div>
+                  <Button
+                    className={Styles.btn}
+                    onClick={() =>
+                      updateQuantity(item.productId, item.quantity + 1)
+                    }
+                  >
+                    +
+                  </Button>
+                </CardContent>
+
+                <CardFooter className={Styles.remove_container}>
+                  <Button
+                    className={Styles.remove_btn}
+                    onClick={() => removeCart(item.productId)}
+                  >
+                    Remove
+                  </Button>
+                </CardFooter>
+              </Card>
+            );
+          })
+        )}
+      </div>
       {cartData.length === 0 ? (
-        <p className={Styles.empty}>Your cart is empty.</p>
+        "hi"
       ) : (
-        cartData.map((item) => {
-          return (
-            <Card key={item.productId} className={Styles.card_container}>
-              <CardHeader className={Styles.img_name}>
-                <Image
-                  src={item.thumbnail}
-                  alt={item.name}
-                  width={100}
-                  height={100}
-                />
-                <CardTitle className={Styles.title}>{item.name}</CardTitle>
-              </CardHeader>
-
-              <div className={Styles.price_container}>
-                <p className={Styles.price}>
-                  <b>${Math.floor(item.price)}/-</b>
-                </p>
-              </div>
-
-              <CardContent className={Styles.card_content}>
-                <Button
-                  className={Styles.btn}
-                  onClick={() =>
-                    updateQuantity(
-                      item.productId,
-                      Math.max(item.quantity - 1, 1)
-                    )
-                  }
-                >
-                  -
-                </Button>
-                <div className={Styles.quantity}>{item.quantity}</div>
-                <Button
-                  className={Styles.btn}
-                  onClick={() =>
-                    updateQuantity(item.productId, item.quantity + 1)
-                  }
-                >
-                  +
-                </Button>
-              </CardContent>
-
-              <CardFooter className={Styles.remove_container}>
-                <Button
-                  className={Styles.remove_btn}
-                  onClick={() => removeCart(item.productId)}
-                >
-                  Remove
-                </Button>
-              </CardFooter>
-            </Card>
-          );
-        })
+        <div className={Styles.cart_totalcount}>
+          <h2>Total Count: ${totalCartCount}/-</h2>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
